@@ -2,7 +2,7 @@
 import fs from 'fs'
 import path from 'path'
 //
-const Archs = ['ia32', 'x64', 'arm64']
+const Archs = ['ia32', 'x64']
 
 const Runtimes = ['electron']
 
@@ -15,14 +15,15 @@ const run = async (/* release: Release */): Promise<void> => {
   OSs.forEach((os) => {
     Runtimes.forEach((runtime) => {
       Archs.forEach((arch) => {
-        if (os !== 'macos-latest' && arch === 'arm64') return;
-        if (os === 'macos-latest' && arch === 'ia32') return;
-
-        matrix.push({
-          runtime,
-          arch,
-          os,
-        })
+        if (
+          !(os === 'macos-latest' && arch === 'ia32')
+        ) {
+          matrix.push({
+            runtime,
+            arch,
+            os,
+          })
+        }
       })
     })
   })
