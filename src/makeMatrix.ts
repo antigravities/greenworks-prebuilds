@@ -4,7 +4,7 @@ import path from 'path'
 //
 const Archs = ['ia32', 'x64', 'arm64']
 
-const Runtimes = ['nw.js', 'electron', 'node']
+const Runtimes = ['electron']
 
 const OSs = ['macos-latest', 'ubuntu-latest', 'windows-latest']
 
