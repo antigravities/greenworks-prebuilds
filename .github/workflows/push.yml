@@ -117,7 +117,6 @@ jobs:
 
       - run: |
           cd greenworks
-          git apply ../diff.patch
           yarn install
           cat package.json
 
