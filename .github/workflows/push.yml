@@ -102,8 +102,8 @@ jobs:
 
       - run: |
           cd greenworks
-          npm install
           npm i -g node-gyp@9.3.1
+          npm install
           cat package.json
 
       - run: npx tsc
