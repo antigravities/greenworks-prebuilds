@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Node
         uses: actions/setup-node@v1
         with:
-          node-version: "16.14.2"
+          node-version: "18.12.1"
 
       - run: npm install
       - run: npx tsc
@@ -74,7 +74,7 @@ jobs:
       - name: Checkout Node
         uses: actions/setup-node@v2-beta
         with:
-          node-version: "16.14.2"
+          node-version: "18.12.1"
 
       - if: matrix.os == 'ubuntu-latest'
         run: |
@@ -103,7 +103,6 @@ jobs:
       - run: |
           cd greenworks
           npm install
-          npm install nan@2.14.2
           cat package.json
 
       - run: npx tsc
