@@ -1,6 +1,7 @@
 name: Build
 on:
   push:
+  workflow_dispatch:
   schedule:
     - cron: '0 0 * * *'
 
@@ -38,7 +39,7 @@ jobs:
 
       - name: get-npm-version
         id: package-version
-        uses: tyankatsu0105/read-package-version-actions@v1
+        uses: Saionaro/extract-package-version@v1.2.1
 
       - name: Fetch tags
         run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
@@ -95,10 +96,17 @@ jobs:
         if: matrix.os == 'windows-latest'
 
         # nw.js
+      # - if: matrix.runtime == 'nw.js'
+      #   uses: MatteoH2O1999/setup-python@v1
+      #   with:
+      #     python-version: 2.7.18
+      #     allow-build: info
+      #     cache-build: true
+      #     cache: pip
       - if: matrix.runtime == 'nw.js'
         uses: actions/setup-python@v4
         with:
-          python-version: 2.7.18
+          python-version: 'pypy2.7-v7.3.12'
       - if: matrix.runtime == 'nw.js'
         run: |
           yarn config set python python2.7
@@ -136,7 +144,7 @@ jobs:
 
       - name: get-npm-version
         id: package-version
-        uses: tyankatsu0105/read-package-version-actions@v1
+        uses: Saionaro/extract-package-version@v1.2.1
 
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
@@ -146,3 +154,7 @@ jobs:
           tag: v${{ steps.package-version.outputs.version }}
           overwrite: true
           file_glob: true
+
+      - name: Keepalive Workflow
+        uses: gautamkrishnar/keepalive-workflow@1.1.0
+
