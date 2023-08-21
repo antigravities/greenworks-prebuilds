@@ -31,7 +31,7 @@
     "execa": "^6.1.0",
     "fs-extra": "^10.1.0",
     "got": "^12.5.3",
-    "modules-abi": "^1.1.0",
+    "@antigravities/modules-abi": "^1.1.0",
     "mri": "^1.2.0",
     "node-abi": "^3.28.0",
     "node-gyp": "^9.3.0",
