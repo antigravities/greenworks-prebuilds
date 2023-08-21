@@ -10,7 +10,7 @@ import { execa } from 'execa'
 import path, { dirname } from 'path'
 import fs from 'fs-extra'
 import mri from 'mri'
-import { getAll } from 'modules-abi'
+import { getAll } from '@antigravities/modules-abi'
 import dns from 'dns'
 
 import { fileURLToPath } from 'url'
